@@ -1,6 +1,6 @@
 import streamlit as st
 import firebase_admin
-import time
+from time import datetime
 from firebase_admin import credentials, firestore
 
 st.title("Exemplos CRUD - Firebase")
@@ -26,7 +26,7 @@ if st.button("Salvar informação do usuário"):
     informacoes = {'nome': st.user.name, 
                 'foto': st.user.picture,
                 'email': st.user.email,
-                'hora': time.datetime.now().strftime('%H:%M:%S')}
+                'hora': datetime.now().strftime('%H:%M:%S')}
     db.collection(colecao).add(informacoes)
     st.write('Informações salvas com sucesso')
 
